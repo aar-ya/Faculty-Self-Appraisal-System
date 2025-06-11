@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated System for Career Advancements</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/explore.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="back-arrow">
+            <a href="{{ url_for('home') }}" aria-label="Back to home"><<</a>
+        </div>
+        <h1 class="page-title">Faculty Self Appraisal System</h1>
+    </nav>
+
+    <!-- Section 1 with background image -->
+    <section class="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="description">Explore the innovative features of our system designed to enhance faculty career growth and development.
+                The Faculty Self-Appraisal System is designed to streamline performance evaluations, offering an automated, secure, 
+                and transparent platform for faculty to assess their achievements and receive personalized recommendations for professional growth.</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('faculty_login') }}" class="btn btn-primary">Faculty Login</a>
+                <a href="{{ url_for('admin_login') }}" class="btn btn-secondary">Admin Login</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional footer -->
+    <footer class="footer">
+        <p>© 2024 DYPCET. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to external JS -->
+    <script src="{{ url_for('static', filename='js/explore.js') }}.js"></script>
+</body>
+</html>

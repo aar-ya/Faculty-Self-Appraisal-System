@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAR Form Review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sarform.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="review-container">
+        <h1><i class="fas fa-file-alt"></i> SAR Form Submission Review</h1>
+        
+        <div id="review-content">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="review-actions">
+            <button id="edit-btn" class="review-btn">
+                <i class="fas fa-edit"></i> Edit Form
+            </button>
+            <button id="submit-btn" class="review-btn confirm">
+                <i class="fas fa-check-circle"></i> Confirm Submission
+            </button>
+            <button id="download-btn" class="review-btn">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/review.js') }}"></script>
+</body>
+</html>

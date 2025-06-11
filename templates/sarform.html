@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAR Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sarform.css') }}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    
+    <form id="sar-form" enctype="multipart/form-data" novalidate>
+        <div class="container">
+            <h1><i class="fas fa-clipboard-check"></i> SAR Form (Self-Appraisal Report)</h1>
+            
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <span>Progress:</span>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <span id="progress-text">0%</span>
+            </div>
+            
+            <!-- Feature Navigation -->
+            <div class="feature-nav">
+                <button type="button" class="nav-btn" onclick="navigateToFeature(1)">1. Teaching</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(2)">2. Feedback</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(3)">3. Admin</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(4)">4. Evaluation</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(5)">5. Outreach</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(6)">6. Domain</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(7)">7. Mentoring</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(8)">8. Collaborations</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(9)">9. Research</button>
+                <button type="button" class="nav-btn" onclick="navigateToFeature(10)">10. Attributes</button>
+            </div>
+            
+
+            <!-- Feature 1 -->
+            <div class="form-section" id="feature-1">
+                <h2>1. Teaching Workload (30 Marks)</h2>
+                <!-- Subfeature 1.A -->
+                <div id="feature-1-a">
+                    <h3>1.A Teaching Workload (20 Marks)</h3>
+                    <label>Semester</label>
+                    <select id="semester-1-a" name="semester-1-a">
+                        <option>Semester I</option>
+                        <option>Semester II</option>
+                    </select>
+                    <label>Class</label>
+                    <select id="class-1-a" name="class-1-a">
+                        <option>FY</option>
+                        <option>SY</option>
+                        <option>TY</option>
+                        <option>B.Tech</option>
+                    </select>
+                    <label>Subject Name</label>
+                    <input type="text" id="subject-1-a" name="subject-1-a" placeholder="Enter Subject Name">
+                    <label>Lectures Planned</label>
+                    <input type="number" id="lectures-planned-1-a" name="lectures-planned-1-a" placeholder="Enter Lectures Planned">
+                    <label>Lectures Conducted</label>
+                    <input type="number" id="lectures-conducted-1-a" name="lectures-conducted-1-a" placeholder="Enter Lectures Conducted">
+                    <button type="button" onclick="addNewRecord('feature-1-a')">Add New</button>
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-1a" name="event-file-1a" multiple>
+                    <p id="file-name-event-file-1a"></p>
+                    <label>Self-Appraisal Score for 1.A(Out of 20)</label>
+                    <input type="number" id="score-1-a" name="score-1-a" placeholder="Enter your score" max="20">
+                </div>
+                
+                <!-- Subfeature 1.B -->
+                <div id="feature-1-b">
+                    <h3>1.B Teaching Pedagogy/Practices (10 Marks)</h3>
+                    <!-- 1.B.i -->
+                    <h4>1.B.i e-Content Development (6 Marks)</h4>
+                    <label>Topic Name</label>
+                    <input type="text" id="topic-name-1-b" name="topic-name-1-b" placeholder="Enter Topic Name">
+                    <label>Link</label>
+                    <input type="url" id="link-1-b" name="link-1-b" placeholder="Enter URL">
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-1b-i" name="event-file-1b-i" multiple>
+                    <p id="file-name-event-file-1b-i"></p>
+                    <button type="button" onclick="addNewRecord('feature-1-b')">Add New</button>
+                    
+                    <!-- 1.B.ii -->
+                    <h4>1.B.ii Innovation in Teaching (4 Marks)</h4>
+                    <label>Subject</label>
+                    <input type="text" id="subject-1-b" name="subject-1-b" placeholder="Enter Subject">
+                    <label>Innovation</label>
+                    <textarea rows="3" id="innovation-1-b" name="innovation-1-b" placeholder="Describe Innovation"></textarea>
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-1b-ii" name="event-file-1b-ii" multiple>
+                    <p id="file-name-event-file-1b-ii"></p>
+                    <button type="button" onclick="addNewRecord('feature-1-b')">Add New</button>
+                    
+                    <label>Self-Appraisal Score for 1.B(Out of 10)</label>
+                    <input type="number" id="score-1-b" name="score-1-b" placeholder="Enter your score" max="10">
+                </div>
+                <button type="button" onclick="completeMainFeature('feature-1')">Save</button>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="form-section" id="feature-2">
+                <h2><i class="fas fa-comments"></i> 2. Feedback from Students (10 Marks)</h2>
+                
+                <label for="semester-2">Semester <span class="required">*</span></label>
+                <select id="semester-2" name="semester-2" required>
+                    <option value="">-- Select Semester --</option>
+                    <option>Semester I</option>
+                    <option>Semester II</option>
+                </select>
+                
+                <label for="subject-2">Subject Name <span class="required">*</span></label>
+                <input type="text" id="subject-2" name="subject-2" placeholder="Enter Subject Name" required>
+                
+                <label for="feedback-2">Feedback Summary</label>
+                <textarea rows="3" id="feedback-2" name="feedback-2" placeholder="Enter Feedback Summary"></textarea>
+                
+                <label for="avg-feedback-2">Average Feedback (Out of 5) <span class="required">*</span></label>
+                <input type="number" id="avg-feedback-2" name="avg-feedback-2" placeholder="Enter Average Feedback" min="0" max="5" step="0.1" required>
+                
+                <label for="event-file-2">Upload Feedback Documents</label>
+                <div class="file-upload">
+                    <input type="file" id="event-file-2" name="event-file-2" multiple>
+                    <label for="event-file-2" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i> Choose Files
+                    </label>
+                    <p id="file-name-event-file-2" class="file-name">No files selected</p>
+                </div>
+                
+                <button type="button" class="add-btn" onclick="addNewRecord('feature-2')">
+                    <i class="fas fa-plus"></i> Add New
+                </button>
+                
+                <label for="score-2">Self-Appraisal Score (Out of 10) <span class="required">*</span></label>
+                <input type="number" id="score-2" name="score-2" placeholder="Enter your score" min="0" max="10" required>
+                
+                <button type="button" class="save-btn" onclick="completeMainFeature('feature-2')">
+                    <i class="fas fa-save"></i> Save Section
+                </button>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="form-section" id="feature-3">
+                <h2>3. Administrative / Executive Responsibilities (20 Marks)</h2>
+                <label>Level</label>
+                <select id="level-3" name="level-3">
+                    <option>Institute</option>
+                    <option>Department</option>
+                </select>
+                <label>Name of Responsibility</label>
+                <input type="text" id="responsibility-3" name="responsibility-3" placeholder="Enter Responsibility">
+                <button type="button" onclick="addNewRecord('feature-3')">Add New</button>
+                <label>Upload File</label>
+                <input type="file" id="event-file-3" name="event-file-3" multiple>
+                <p id="file-name-event-file-3"></p>
+                <label>Self-Appraisal Score for Administrative / Executive Responsibilities (Out of 20)</label>
+                <input type="number" id="score-3" name="score-3" placeholder="Enter your score" max="20">
+                <button type="button" onclick="completeMainFeature('feature-3')">Save</button>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="form-section" id="feature-4">
+                <h2>4. Evaluation and Assessment (20 Marks)</h2>
+                <!-- Subfeature 4.A -->
+                <div id="feature-4-a">
+                    <h3>4.A Result Analysis (14 Marks)</h3>
+                    <label>Semester</label>
+                    <select id="semester-4-a" name="semester-4-a">
+                        <option>Semester I</option>
+                        <option>Semester II</option>
+                    </select>
+                    <label>Subject Name</label>
+                    <input type="text" id="subject-4-a" name="subject-4-a" placeholder="Enter Subject Name">
+                    <label>Students Passing %</label>
+                    <input type="number" id="passing-percentage-4-a" name="passing-percentage-4-a" placeholder="Enter Passing Percentage">
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-4a" name="event-file-4a" multiple>
+                    <p id="file-name-event-file-4a"></p>
+                    <button type="button" onclick="addNewRecord('feature-4-a')">Add New</button>
+                </div>
+                
+                <!-- Subfeature 4.B -->
+                <div id="feature-4-b">
+                    <h3>4.B Examination Duties (6 Marks; 1 Mark Each)</h3>
+                    <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Name of Duty</th>
+                                <th>Details</th>
+                                <th>Self-Appraisal Score</th>
+                                <th>Validation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Paper Setting</td>
+                                <td><input type="text" id="details-4-b-1" name="details-4-b-1" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-1" name="score-4-b-1" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-1" name="event-file-4b-1" multiple></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Paper Assessment</td>
+                                <td><input type="text" id="details-4-b-2" name="details-4-b-2" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-2" name="score-4-b-2" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-2" name="event-file-4b-2" multiple></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Supervision</td>
+                                <td><input type="text" id="details-4-b-3" name="details-4-b-3" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-3" name="score-4-b-3" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-3" name="event-file-4b-3" multiple></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Internal Examiner Duty</td>
+                                <td><input type="text" id="details-4-b-4" name="details-4-b-4" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-4" name="score-4-b-4" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-4" name="event-file-4b-4" multiple></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Flying Squad</td>
+                                <td><input type="text" id="details-4-b-5" name="details-4-b-5" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-5" name="score-4-b-5" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-5" name="event-file-4b-5" multiple></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>CAP Director</td>
+                                <td><input type="text" id="details-4-b-6" name="details-4-b-6" placeholder="Enter Details"></td>
+                                <td><input type="number" id="score-4-b-6" name="score-4-b-6" placeholder="Score" max="1"></td>
+                                <td><input type="file" id="event-file-4b-6" name="event-file-4b-6" multiple></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <label>Self-Appraisal Score for Evaluation and Assessment (Out of 20 Marks)</label>
+                <input type="number" id="score-4" name="score-4" placeholder="Enter your score" max="20">
+                <button type="button" onclick="completeMainFeature('feature-4')">Save</button>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="form-section" id="feature-5">
+                <h2>5. Extension and Outreach Activities (10 Marks)</h2>
+                <div id="feature-5-content">
+                    <label>Particular</label>
+                    <input type="text" id="particular-5" name="particular-5" placeholder="Enter activity details (e.g., NSS, Industrial Visit)">
+                    <label>Total Hours Spent</label>
+                    <input type="number" id="hours-5" name="hours-5" placeholder="Enter total hours spent">
+                    <label>Date - From</label>
+                    <input type="date" id="date-from-5" name="date-from-5">
+                    <label>Date - To</label>
+                    <input type="date" id="date-to-5" name="date-to-5">
+                    <button type="button" onclick="addNewRecord('feature-5')">Add New</button>
+                </div>
+                <label>Upload File</label>
+                <input type="file" id="event-file-5" name="event-file-5" multiple>
+                <p id="file-name-event-file-5"></p>
+                <label>Self-Appraisal Score for Extension and Outreach Activities (Out of 10 Marks)</label>
+                <input type="number" id="score-5" name="score-5" placeholder="Enter your score" max="10">
+                <button type="button" onclick="completeMainFeature('feature-5')">Save</button>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="form-section" id="feature-6">
+                <h2>6. Domain Specific Activities (60 Marks)</h2>
+                <!-- 6.A OBE Implementation -->
+                <h3>6.A) Outcome Based Education (OBE) Implementation (20 Marks)</h3>
+                <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Particulars</th>
+                        <th>Record Available (Y/N)</th>
+                        <th>Self-Appraisal Score</th>
+                        <th>Validation</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>CO-PO-PSO Justification sheets for all courses available</td>
+                        <td><select id="obe-1-yn" name="obe-1-yn"><option value="Y">Yes</option><option value="N">No</option></select></td>
+                        <td><input type="number" id="obe-1-score" name="obe-1-score" max="4"></td>
+                        <td><input type="file" id="event-file-6a-1" name="event-file-6a-1" multiple></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Articulation Matrix of CO-PO-PSO Mapping is available</td>
+                        <td><select id="obe-2-yn" name="obe-2-yn"><option value="Y">Yes</option><option value="N">No</option></select></td>
+                        <td><input type="number" id="obe-2-score" name="obe-2-score" max="4"></td>
+                        <td><input type="file" id="event-file-6a-2" name="event-file-6a-2" multiple></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Course outcome attainment calculated for all courses</td>
+                        <td><select id="obe-3-yn" name="obe-3-yn"><option value="Y">Yes</option><option value="N">No</option></select></td>
+                        <td><input type="number" id="obe-3-score" name="obe-3-score" max="4"></td>
+                        <td><input type="file" id="event-file-6a-3" name="event-file-6a-3" multiple></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PSO & Program outcome attainment through CO calculated</td>
+                        <td><select id="obe-4-yn" name="obe-4-yn"><option value="Y">Yes</option><option value="N">No</option></select></td>
+                        <td><input type="number" id="obe-4-score" name="obe-4-score" max="4"></td>
+                        <td><input type="file" id="event-file-6a-4" name="event-file-6a-4" multiple></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Activity Plan to overcome the gaps</td>
+                        <td><select id="obe-5-yn" name="obe-5-yn"><option value="Y">Yes</option><option value="N">No</option></select></td>
+                        <td><input type="number" id="obe-5-score" name="obe-5-score" max="4"></td>
+                        <td><input type="file" id="event-file-6a-5" name="event-file-6a-5" multiple></td>
+                    </tr>
+                </table>
+                <label>Self-Appraisal Score of Outcome Based Education (Out of 20)</label>
+                <input type="number" id="obe-score" name="obe-score" max="20">
+                
+                <!-- 6.B Faculty Participation -->
+                <h3>6.B) Faculty Participation in Refresher Course/Workshops/Webinars (15 Marks)</h3>
+                <div id="faculty-participation">
+                    <label>Name of Event</label>
+                    <input type="text" id="event-name-6b" name="event-name-6b" placeholder="Enter event name">
+                    <label>Organized By</label>
+                    <input type="text" id="event-organizer-6b" name="event-organizer-6b" placeholder="Enter organizer">
+                    <label>Date & Duration</label>
+                    <input type="date" id="event-date-6b" name="event-date-6b">
+                    <input type="number" id="event-duration-6b" name="event-duration-6b" placeholder="Duration (in hrs)">
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-6b" name="event-file-6b" multiple>
+                    <p id="file-name-event-file-6b"></p>
+                    <button type="button" onclick="addNewRecord('faculty-participation')">Add New</button>
+                </div>
+                <label>Self-Appraisal Score of Faculty Participation (Out of 15)</label>
+                <input type="number" id="participation-score" name="participation-score" max="15">
+                
+                <!-- 6.C Workshops Conducted -->
+                <h3>6.C) Workshops/ Seminars Conducted/ Organized (10 Marks)</h3>
+                <div id="workshops-conducted">
+                    <label>Name of Event</label>
+                    <input type="text" id="event-name-6c" name="event-name-6c" placeholder="Enter event name">
+                    <label>Date</label>
+                    <input type="date" id="event-date-6c" name="event-date-6c">
+                    <label>Duration (in hrs)</label>
+                    <input type="number" id="event-duration-6c" name="event-duration-6c" placeholder="Duration (in hrs)">
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-6c" name="event-file-6c" multiple>
+                    <p id="file-name-event-file-6c"></p>
+                    <button type="button" onclick="addNewRecord('workshops-conducted')">Add New</button>
+                </div>
+                <label>Self-Appraisal Score of Workshops Conducted (Out of 10)</label>
+                <input type="number" id="workshops-score" name="workshops-score" max="10">
+                
+                <!-- 6.D Teachers Invited -->
+                <h3>6.D) Teachers Invited as Resource Persons (5 Marks)</h3>
+                <div id="teachers-invited">
+                    <label>Name of Event</label>
+                    <input type="text" id="event-name-6d" name="event-name-6d" placeholder="Enter event name">
+                    <label>Organized By</label>
+                    <input type="text" id="event-organizer-6d" name="event-organizer-6d" placeholder="Enter organizer">
+                    <label>Date & Duration</label>
+                    <input type="date" id="event-date-6d" name="event-date-6d">
+                    <input type="number" id="event-duration-6d" name="event-duration-6d" placeholder="Duration (in hrs)">
+                    <label>Upload File</label>
+                    <input type="file" id="event-file-6d" name="event-file-6d" multiple>
+                    <p id="file-name-event-file-6d"></p>
+                    <button type="button" onclick="addNewRecord('teachers-invited')">Add New</button>
+                </div>
+                <label>Self-Appraisal Score of Teachers Invited (Out of 5)</label>
+                <input type="number" id="invited-score" name="invited-score" max="5">
+
+                <!-- 6.E NPTEL Certifications -->
+                <h3>6.E) NPTEL or Any Other Certification (10 Marks)</h3>
+                <div id="nptel-certifications">
+                    <label>Name of Subject</label>
+                    <input type="text" id="cert-subject" name="cert-subject" placeholder="Enter subject name">
+                    <label>Duration of Course</label>
+                    <input type="text" id="cert-duration" name="cert-duration" placeholder="Enter duration (hours or weeks)">
+                    <label>Date of Completion</label>
+                    <input type="date" id="cert-date" name="cert-date">
+                    <label>Percentage of Score</label>
+                    <input type="number" id="cert-score" name="cert-score" placeholder="Enter percentage">
+                    <label>Upload File</label>
+                    <input type="file" id="cert-file" name="cert-file" multiple>
+                    <p id="file-name-cert-file"></p>
+                    <button type="button" onclick="addNewRecord('nptel-certifications')">Add New</button>
+                </div>
+                <label>Self-Appraisal Score of NPTEL or Other Certification (Out of 10)</label>
+                <input type="number" id="certification-score" name="certification-score" max="10">
+                <button type="button" onclick="completeMainFeature('feature-6')">Save</button>
+            </div>
+
+            <!-- Feature 7 -->
+            <div class="form-section" id="feature-7">
+                <h2>7. Student Mentoring (20 Marks)</h2>
+    
+                <!-- 7.A Student Internship under Guidance -->
+                <h3>7.A) Student Internship under Guidance (10 Marks)</h3>
+                <div id="internship-guidance">
+                    <label>Name of Student/Group</label>
+                    <input type="text" id="student-name-7a" name="student-name-7a" placeholder="Enter name of student/group" required>
+                    <label>Name of Industry</label>
+                    <input type="text" id="industry-name-7a" name="industry-name-7a" placeholder="Enter name of industry" required>
+                    <label>Stipend</label>
+                    <input type="number" id="stipend-7a" name="stipend-7a" placeholder="Enter stipend">
+                    <label>Duration (In Weeks)</label>
+                    <input type="number" id="duration-7a" name="duration-7a" placeholder="Enter duration (in weeks)" required>
+                    <label>Progress Report Available</label>
+                    <input type="checkbox" id="progress-report-7a" name="progress-report-7a"> Yes
+                    <label>Upload File</label>
+                    <input type="file" id="file-upload-7a" name="file-upload-7a" multiple>
+                    <p id="file-name-file-upload-7a"></p>
+                    <button type="button" id="add-internship-btn">Add New Internship</button>
+                </div>
+                <div id="internship-guidance-records"></div>
+                <label>Self-Appraisal Score of Student Internship under Guidance (Out of 10)</label>
+                <input type="number" id="internship-score" name="internship-score" max="10">
+    
+                <!-- 7.B Counseling & Mentoring -->
+                <h3>7.B) Counseling & Mentoring (10 Marks)</h3>
+                <div id="counseling-mentoring">
+                    <label>Class</label>
+                    <select id="class-7b" name="class-7b">
+                        <option value="FY">FY</option>
+                        <option value="SY">SY</option>
+                        <option value="TY">TY</option>
+                        <option value="B.Tech">B.Tech</option>
+                    </select>
+                    <label>Division</label>
+                    <select id="division-7b" name="division-7b">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="None">None</option>
+                    </select>
+                    <label>No. of Students Allotted</label>
+                    <input type="number" id="students-allotted-7b" name="students-allotted-7b" placeholder="Enter number of students">
+                    <label>Frequency of Meetings Conducted/Year</label>
+                    <input type="number" id="meeting-frequency-7b" name="meeting-frequency-7b" placeholder="Enter frequency per year">
+                    <label>Total No. of Meetings Conducted</label>
+                    <input type="number" id="total-meetings-7b" name="total-meetings-7b" placeholder="Enter total number of meetings">
+                    <label>Upload File</label>
+                    <input type="file" id="file-upload-7b" name="file-upload-7b" multiple>
+                    <p id="file-name-file-upload-7b"></p>
+                    <button type="button" onclick="addNewRecord('counseling-mentoring')">Add New</button>
+                </div>
+                <label>Self-Appraisal Score of Counseling & Mentoring (Out of 10)</label>
+                <input type="number" id="counseling-score" name="counseling-score" max="10">
+                <button type="button" onclick="completeMainFeature('feature-7')">Save</button>
+            </div>
+
+            <!-- Feature 8 -->
+            <div class="form-section" id="feature-8">
+                <h2>8) Collaborations (20 Marks)</h2>
+    
+                <!-- 8.A) Collaborative activities for research -->
+                <h3>8.A) Collaborative Activities for Research (10 Marks)</h3>
+                <div id="collaborative-research">
+                    <label>Particulars of Activity</label>
+                    <input type="text" id="activity-particulars-8a" name="activity-particulars-8a" placeholder="Enter details of the activity" required>
+                    <label>Name of Industry</label>
+                    <input type="text" id="industry-name-8a" name="industry-name-8a" placeholder="Enter name of industry" required>
+                    <label>Nature of Collaboration</label>
+                    <input type="text" id="collaboration-nature-8a" name="collaboration-nature-8a" placeholder="Describe the nature of collaboration" required>
+                    <label>Upload File (If available)</label>
+                    <input type="file" id="file-upload-8a" name="file-upload-8a" multiple>
+                    <p id="file-name-file-upload-8a"></p>
+                    <button type="button" id="add-collaboration-btn">Add New Collaboration</button>
+                </div>
+                <div id="collaborative-research-records"></div>
+                <label>Self Appraisal Score of Collaborative Activities for Research (Out of 10)</label>
+                <input type="number" id="collaborative-research-score" name="collaborative-research-score" max="10">
+    
+                <hr>
+    
+                <!-- 8.B) Sponsored Projects -->
+                <h3>8.B) Sponsored Projects (10 Marks)</h3>
+                <div id="sponsored-projects">
+                    <label>Title of Project</label>
+                    <input type="text" id="project-title-8b" name="project-title-8b" placeholder="Enter title of project" required>
+                    <label>Amount Sponsored</label>
+                    <input type="number" id="sponsored-amount-8b" name="sponsored-amount-8b" placeholder="Enter amount sponsored" required>
+                    <label>Name of Sponsoring Industry</label>
+                    <input type="text" id="sponsoring-industry-8b" name="sponsoring-industry-8b" placeholder="Enter name of sponsoring industry" required>
+                    <label>Upload File (If available)</label>
+                    <input type="file" id="file-upload-8b" name="file-upload-8b" multiple>
+                    <p id="file-name-file-upload-8b"></p>
+                    <button type="button" id="add-sponsored-project-btn">Add New Project</button>
+                </div>
+                <div id="sponsored-projects-records"></div>
+                <label>Self Appraisal Score of Sponsored Projects (Out of 10)</label>
+                <input type="number" id="sponsored-projects-score" name="sponsored-projects-score" max="10">
+                <button type="button" onclick="completeMainFeature('feature-8')">Save</button>
+            </div>
+
+            <!-- Feature 9 -->
+            <div class="form-section" id="feature-9">
+                <h2>9) Research Activity (70 Marks)</h2>
+    
+                <!-- 9.A -->
+                <div id="research-grants" class="subpoint">
+                    <h3>9.A) Research Grants (Marks: 10)</h3>
+                    <label for="project-title">Title of Project:</label>
+                    <input type="text" id="project-title" name="project-title">
+                    <label for="grant-sanction">Total Grant Sanction (In Lakhs):</label>
+                    <input type="number" id="grant-sanction" name="grant-sanction">
+                    <label for="funding-agency">Name of Funding Agency:</label>
+                    <input type="text" id="funding-agency" name="funding-agency">
+                    <label for="duration">Duration (In Weeks):</label>
+                    <input type="number" id="duration" name="duration">
+                    <label for="date-sanction">Date of Sanction:</label>
+                    <input type="date" id="date-sanction" name="date-sanction">
+                    <label for="grant-file">Choose File (If available):</label>
+                    <input type="file" id="grant-file" name="grant-file" multiple>
+                    <p id="file-name-grant-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-grants">Self Appraisal Score (Out of 10):</label>
+                    <input type="number" id="self-score-grants" name="self-score-grants" max="10">
+                </div>
+    
+                <!-- 9.B -->
+                <div id="research-publications-peer-reviewed" class="subpoint">
+                    <h3>9.B) Research Publication in Peer-Reviewed Journals (Marks: 10)</h3>
+                    <label for="paper-title-peer">Title of Paper:</label>
+                    <input type="text" id="paper-title-peer" name="paper-title-peer">
+                    <label for="journal-name-peer">Name of Journal:</label>
+                    <input type="text" id="journal-name-peer" name="journal-name-peer">
+                    <label for="publisher-peer">Publisher:</label>
+                    <input type="text" id="publisher-peer" name="publisher-peer">
+                    <label for="isbn-peer">ISBN/ISSN No.:</label>
+                    <input type="text" id="isbn-peer" name="isbn-peer">
+                    <label for="peer-review-file">Choose File (If available):</label>
+                    <input type="file" id="peer-review-file" name="peer-review-file" multiple>
+                    <p id="file-name-peer-review-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-peer-review">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-peer-review" name="self-score-peer-review" max="10">
+                </div>
+    
+                <!-- 9.C -->
+                <div id="research-publications-ieee" class="subpoint">
+                    <h3>9.C) Research Publication in IEEE/SCOPUS/SCI (Marks: 10)</h3>
+                    <label for="paper-title-ieee">Title of Paper:</label>
+                    <input type="text" id="paper-title-ieee" name="paper-title-ieee">
+                    <label for="journal-name-ieee">Name of Journal:</label>
+                    <input type="text" id="journal-name-ieee" name="journal-name-ieee">
+                    <label for="citation-index">Citation Index:</label>
+                    <input type="number" id="citation-index" name="citation-index">
+                    <label for="h-index">H Index:</label>
+                    <input type="number" id="h-index" name="h-index">
+                    <label for="ieee-file">Choose File (If available):</label>
+                    <input type="file" id="ieee-file" name="ieee-file" multiple>
+                    <p id="file-name-ieee-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-ieee">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-ieee" name="self-score-ieee" max="10">
+                </div>
+    
+                <!-- 9.D -->
+                <div id="faculty-conferences" class="subpoint">
+                    <h3>9.D) Faculty Participation in Conferences (Marks: 5)</h3>
+                    <label for="conference-title">Title of Paper:</label>
+                    <input type="text" id="conference-title" name="conference-title">
+                    <label for="conference-level">Level of Conference:</label>
+                    <select id="conference-level" name="conference-level">
+                        <option value="National">National</option>
+                        <option value="International">International</option>
+                    </select>
+                    <label for="conference-name">Name of Conference:</label>
+                    <input type="text" id="conference-name" name="conference-name">
+                    <label for="conference-proceedings">Title of Proceedings:</label>
+                    <input type="text" id="conference-proceedings" name="conference-proceedings">
+                    <label for="conference-file">Choose File (If available):</label>
+                    <input type="file" id="conference-file" name="conference-file" multiple>
+                    <p id="file-name-conference-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-conferences">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-conferences" name="self-score-conferences" max="5">
+                </div>
+    
+                <!-- 9.E -->
+                <div id="books-chapters" class="subpoint">
+                    <h3>9.E) Books / Chapters in Edited Volumes (Marks: 5)</h3>
+                    <label for="book-title">Title of Book:</label>
+                    <input type="text" id="book-title" name="book-title">
+                    <label for="chapter-name">Chapter Name:</label>
+                    <input type="text" id="chapter-name" name="chapter-name">
+                    <label for="book-publisher">Publisher:</label>
+                    <input type="text" id="book-publisher" name="book-publisher">
+                    <label for="book-file">Choose File (If available):</label>
+                    <input type="file" id="book-file" name="book-file" multiple>
+                    <p id="file-name-book-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-books">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-books" name="self-score-books" max="5">
+                </div>
+    
+                <!-- 9.F -->
+                <div id="reviewer-editorial" class="subpoint">
+                    <h3>9.F) Reviewer / Editorial Board Member (Marks: 5)</h3>
+                    <label for="journal-name-reviewer">Name of Journal/Conference/Book:</label>
+                    <input type="text" id="journal-name-reviewer" name="journal-name-reviewer">
+                    <label for="conference-level-reviewer">Level of Conference:</label>
+                    <select id="conference-level-reviewer" name="conference-level-reviewer">
+                        <option value="National">National</option>
+                        <option value="International">International</option>
+                    </select>
+                    <label for="reviewer-file">Choose File (If available):</label>
+                    <input type="file" id="reviewer-file" name="reviewer-file" multiple>
+                    <p id="file-name-reviewer-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-reviewer">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-reviewer" name="self-score-reviewer" max="5">
+                </div>
+    
+                <!-- 9.G -->
+                <div id="patents-copyright" class="subpoint">
+                    <h3>9.G) Patents / Copyright (Marks: 10)</h3>
+                    <label for="patent-title">Title of Patent/Copyright:</label>
+                    <input type="text" id="patent-title" name="patent-title">
+                    <label for="patent-app-number">Design/Utility Application No.:</label>
+                    <input type="text" id="patent-app-number" name="patent-app-number">
+                    <label for="patent-status">Status:</label>
+                    <select id="patent-status" name="patent-status">
+                        <option value="Filed">Filed</option>
+                        <option value="Published">Published</option>
+                        <option value="Granted">Granted</option>
+                    </select>
+                    <label for="patent-file">Choose File (If available):</label>
+                    <input type="file" id="patent-file" name="patent-file" multiple>
+                    <p id="file-name-patent-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-patents">Self Appraisal Score (Out of 10):</label>
+                    <input type="number" id="self-score-patents" name="self-score-patents" max="10">
+                </div>
+    
+                <!-- 9.H -->
+                <div id="development-activities" class="subpoint">
+                    <h3>9.H) Development Activities (Marks: 5)</h3>
+                    <label for="development-activity">Activity:</label>
+                    <input type="text" id="development-activity" name="development-activity">
+                    <label for="funding-amount">Funding Amount (If any):</label>
+                    <input type="number" id="funding-amount" name="funding-amount">
+                    <label for="development-file">Choose File (If available):</label>
+                    <input type="file" id="development-file" name="development-file" multiple>
+                    <p id="file-name-development-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-development">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-development" name="self-score-development" max="5">
+                </div>
+                
+                <!-- 9.I -->
+                <div id="consultancy" class="subpoint">
+                    <h3>9.I) Consultancy from Industry (Marks: 5)</h3>
+                    <label for="consultancy-area">Area/Nature of Consultancy:</label>
+                    <input type="text" id="consultancy-area" name="consultancy-area">
+                    <label for="funds-generated">Funds Generated (In Rs):</label>
+                    <input type="number" id="funds-generated" name="funds-generated">
+                    <label for="consultancy-file">Choose File (If available):</label>
+                    <input type="file" id="consultancy-file" name="consultancy-file" multiple>
+                    <p id="file-name-consultancy-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-consultancy">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-consultancy" name="self-score-consultancy" max="5">
+                </div>
+    
+                <!-- 9.J -->
+                <div id="awards" class="subpoint">
+                    <h3>9.J) Awards Won by Teacher (Marks: 5)</h3>
+                    <label for="award-particular">Particular:</label>
+                    <input type="text" id="award-particular" name="award-particular">
+                    <label for="awarding-agency">Awarding Agency:</label>
+                    <input type="text" id="awarding-agency" name="awarding-agency">
+                    <label for="awards-file">Choose File (If available):</label>
+                    <input type="file" id="awards-file" name="awards-file" multiple>
+                    <p id="file-name-awards-file"></p>
+                    <button type="button" class="add-new">Add New...</button>
+                    <label for="self-score-awards">Self Appraisal Score (Out of 5):</label>
+                    <input type="number" id="self-score-awards" name="self-score-awards" max="5">
+                </div>
+                <button type="button" onclick="completeMainFeature('feature-9')">Save</button>
+            </div>
+
+            <!-- ... (other feature sections) ... -->
+
+            <!-- Feature 10 -->
+            <div class="form-section" id="feature-10">
+                <div id="personal-attributes" class="parameter-section">
+                    <h3><i class="fas fa-user-tie"></i> 10. Personal Attributes (10 Marks)</h3>
+                    <p>Rate yourself on each attribute (1 mark each, max total: 10 marks):</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Attribute</th>
+                                <th>Self-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- Rows for Attributes -->
+                            <tr>
+                                <td>1</td>
+                                <td>Attitude towards work</td>
+                                <td><input type="number" class="self-appraisal-input" name="attitude-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Sense of responsibility</td>
+                                <td><input type="number" class="self-appraisal-input" name="responsibility-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Overall behavior and personality</td>
+                                <td><input type="number" class="self-appraisal-input" name="behavior-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Emotional Stability</td>
+                                <td><input type="number" class="self-appraisal-input" name="emotional-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Communication Skills</td>
+                                <td><input type="number" class="self-appraisal-input" name="communication-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Professional Skills</td>
+                                <td><input type="number" class="self-appraisal-input" name="professional-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Moral courage and willingness</td>
+                                <td><input type="number" class="self-appraisal-input" name="moral-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Leadership qualities</td>
+                                <td><input type="number" class="self-appraisal-input" name="leadership-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Capacity to work within timeframe</td>
+                                <td><input type="number" class="self-appraisal-input" name="timeframe-score" min="0" max="1"></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Decision making ability</td>
+                                <td><input type="number" class="self-appraisal-input" name="decision-score" min="0" max="1"></td>
+                            </tr>
+
+                            <!--   WARNING    -->
+                            <tr>
+                                <td colspan="2" class="text-right"><strong>Total:</strong></td>
+                                <td><span id="attribute-total">0</span>/10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    <div id="form-error" class="error-message">Please fill all required fields before submitting.</div>
+    
+    <button type="button" onclick="completeMainFeature('feature-10')">Save</button>
+    <div id="submit-confirm" style="display:none;">
+        <p>Are you sure you want to submit? No changes can be made after submission.</p>
+        <button type="button" id="confirm-submit">Yes, Submit</button>
+        <button type="button" id="cancel-submit">Cancel</button>
+    </div>
+    <button type="button" id="final-submit">Submit SAR Form</button>
+</div>
+
+<!-- Navigation Buttons -->
+<div class="buttons">
+    <button type="button" class="nav-btn prev-btn" onclick="previousFeature()">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <button type="button" class="nav-btn next-btn" onclick="nextFeature()">
+        Next <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+</div>
+</form>
+
+<!-- Confirmation Modal--> 
+<div id="confirmation-modal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeModal()">&times;</span>
+<h3 id="modal-title"></h3>
+<p id="modal-message"></p>
+<div class="modal-buttons">
+    <button type="button" id="modal-cancel" class="modal-btn">Cancel</button>
+    <button type="button" id="modal-confirm" class="modal-btn confirm">Confirm</button>
+</div>
+</div>
+</div>
+
+
+<script>
+    // ====== NEW CODE STARTS (Can be removed safely if issues occur) ======
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if we're on the submit page (adjust selector as needed)
+        const isSubmitPage = document.querySelector('input[type="submit"]') !== null;
+        
+        if (isSubmitPage) {
+            addReviewFunctionality();
+        }
+    });
+    
+    function addReviewFunctionality() {
+        // Prevent default form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showReviewPage();
+        });
+    
+        // Create review page HTML dynamically
+        function showReviewPage() {
+            // Store original form HTML (to restore later if "Edit" clicked)
+            const originalFormHTML = form.innerHTML;
+            
+            // Generate review HTML
+            let reviewHTML = `
+                <h2>Review Your Submission</h2>
+                <div style="margin: 20px 0; padding: 15px; border: 1px solid #ddd;">
+                    ${getFormDataAsHTML()}
+                </div>
+                <div style="color: red; margin: 15px 0;">
+                    ⚠️ <strong>Warning:</strong> Once submitted, you cannot edit this report.
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                    <div>
+                        <button id="editBtn" style="margin-right: 10px;">Edit</button>
+                        <button id="downloadBtn">Download PDF</button>
+                    </div>
+                    <button id="finalSubmitBtn" style="background: #4CAF50; color: white;">Submit</button>
+                </div>
+            `;
+            
+            // Replace form with review
+            form.innerHTML = reviewHTML;
+            
+            // Button event listeners
+            document.getElementById('editBtn').addEventListener('click', function() {
+                form.innerHTML = originalFormHTML;
+                addReviewFunctionality(); // Re-attach listeners
+            });
+            
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                alert("PDF generation would happen here");
+                // Optional: Use jsPDF or similar library
+            });
+            
+            document.getElementById('finalSubmitBtn').addEventListener('click', function() {
+                form.submit(); // Actual submission
+                showConfirmation();
+            });
+        }
+        
+        // Collect all form data for review
+        function getFormDataAsHTML() {
+            let html = '';
+            const inputs = form.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                if (input.type !== 'submit' && input.type !== 'button') {
+                    const label = document.querySelector(`label[for="${input.id}"]`) || input.name;
+                    const value = input.type === 'checkbox' ? (input.checked ? 'Yes' : 'No') : input.value;
+                    
+                    html += `<p><strong>${label?.textContent || input.name}:</strong> ${value || 'N/A'}</p>`;
+                }
+            });
+            
+            return html;
+        }
+        
+        // Show thank-you message
+        function showConfirmation() {
+            form.innerHTML = `
+                <h2>Thank You!</h2>
+                <p>Your Self Appraisal Report has been submitted successfully.</p>
+                <p>You will receive a confirmation email shortly.</p>
+            `;
+        }
+    }
+    // ====== NEW CODE ENDS (Can safely delete up to here if problems occur) ======
+    </script>
+<script src="{{ url_for('static', filename='js/sarform.js') }}"></script>
+</body>
+</html>

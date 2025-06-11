@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Faculty Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f7ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 400px;
+      box-sizing: border-box;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #003d80;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #003d80;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .success {
+      color: green;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Faculty Signup</h2>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+      <div class="success">{{ success }}</div>
+    {% endif %}
+
+    <form method="POST" action="/signup">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="text" name="emp_id" placeholder="Employee ID" required />
+      <input type="email" name="email" placeholder="Email ID" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="password" name="password" placeholder="Create Password" required />
+      <input type="password" name="re_password" placeholder="Re-enter Password" required />
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/faculty_login">Login here</a></p>
+  </div>
+
+  <script>
+    // Realtime password match check
+    const password = document.querySelector('input[name="password"]');
+    const rePassword = document.querySelector('input[name="re_password"]');
+
+    if (password && rePassword) {
+      rePassword.addEventListener('input', () => {
+        if (password.value !== rePassword.value) {
+          rePassword.setCustomValidity("Passwords don't match");
+        } else {
+          rePassword.setCustomValidity('');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

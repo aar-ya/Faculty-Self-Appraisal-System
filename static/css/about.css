@@ -1,0 +1,188 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.back-button {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+/* Content Section */
+.content-section {
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hollow Shiny Frame for Images and Videos */
+.hollow-shiny-frame {
+    display: inline-block;
+    padding: 10px;
+    border: 5px solid transparent; /* Transparent border to show shiny border only */
+    border-radius: 15px;
+    background: linear-gradient(145deg, #003366, #003366); /* Shiny blue gradient border */
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 40px;
+    box-shadow: 0 0 15px #003366(0, 123, 255, 0.5); /* Shiny border effect */
+}
+
+.hollow-shiny-frame:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px #003366(0, 123, 255, 0.5); /* Glow effect on hover */
+}
+
+/* Placeholder for Image or Video inside the frame */
+.image-placeholder, .video-placeholder {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    background-color: transparent; /* Transparent background to ensure the border is visible */
+    border: 5px solid transparent; /* Transparent border to fit within the hollow frame */
+    border-radius: 15px; 
+}
+
+/* Solution Section */
+.solution-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.solution-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Footer */
+.footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar h1 {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+
+    .back-button {
+        font-size: 20px;
+        margin-right: 0;
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .hollow-shiny-frame {
+        padding: 10px;
+    }
+
+    .solution-text {
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar h1 {
+        font-size: 18px;
+    }
+
+    .back-button {
+        font-size: 18px;
+    }
+
+    .content-section {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .hollow-shiny-frame {
+        padding: 5px;
+    }
+
+    .solution-text {
+        font-size: 16px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .image-placeholder, .video-placeholder {
+        max-width: 100%;
+    }
+}

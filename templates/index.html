@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="College Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About System</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        </ul>
+    </nav>
+    <!-- Placeholder Content -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="headline">Revolutionizing Faculty Self-Appraisal for Career Growth</h1>
+            <p class="subheadline">Empower your academic journey with our self-appraisal system designed for faculty members.</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('explore') }}" class="btn btn-primary">Explore System</a>
+                <a href="{{ url_for('demo') }}" class="btn btn-secondary">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h3 class="features-title">Key Features of Faculty Self-Appraisal System</h3>
+            <div class="feature-section">
+                <div class="text-content">
+                    <h3>Automated Self-Assessment Forms</h3>
+                    <p>Simplify the self-appraisal process with automated, customizable forms that faculty can fill out to reflect their achievements and goals.</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='images/form.jpeg') }}" alt="Automated Self-Assessment Forms">
+                </div>
+            </div>
+            <div class="feature-section reverse">
+                <div class="text-content">
+                    <h3>Performance Analytics Dashboard</h3>
+                    <p>Provide a comprehensive dashboard displaying performance metrics, progress towards goals, and areas for improvement based on the self-assessment data.</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='images/chart.jpeg') }}" alt="Performance Analytics Dashboard">
+                </div>
+            </div>
+            <div class="feature-section">
+                <div class="text-content">
+                    <h3>Personalized Feedback and Recommendations</h3>
+                    <p>Generate personalized feedback and career advancement recommendations based on the faculty's self-assessment, performance data, and institutional benchmarks.</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='images/feedback.jpeg') }}" alt="Personalized Feedback and Recommendations">
+                </div>
+            </div>
+            <div class="feature-section reverse">
+                <div class="text-content">
+                    <h3>Goal Setting and Tracking</h3>
+                    <p>Allow faculty to set career and professional development goals and track their progress over time, with reminders and milestones to stay on track.</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='images/goal.jpeg') }}" alt="Goal Setting and Tracking">
+                </div>
+            </div>
+        </div>
+    </section> 
+    <section class="scrolling-images"></section>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content">
+                <img src="{{ url_for('static', filename='images/f1.jpeg') }}" alt="Image 1">
+                <img src="{{ url_for('static', filename='images/f2.jpg') }}" alt="Image 2">
+                <img src="{{ url_for('static', filename='images/f3.jpeg') }}" alt="Image 3">
+                <img src="{{ url_for('static', filename='images/f4.jpeg') }}" alt="Image 4">
+                <img src="{{ url_for('static', filename='images/f5.jpeg') }}" alt="Image 5">
+                <img src="{{ url_for('static', filename='images/f6.jpeg') }}" alt="Image 6">
+                <img src="{{ url_for('static', filename='images/f7.jpeg') }}" alt="Image 7">
+                <img src="{{ url_for('static', filename='images/f8.jpg') }}" alt="Image 8">
+
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-media">
+                <a href="https://www.instagram.com" target="_blank" class="social-icon insta" aria-label="Instagram">
+                    <img src="{{ url_for('static', filename='images/insta.png') }}" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="social-icon fb" aria-label="Facebook">
+                    <img src="{{ url_for('static', filename='images/fb.png') }}" alt="Facebook">
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon twitter" aria-label="Twitter">
+                    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="Twitter">
+                </a>
+                <a href="mailto:envisagers1613@gmail.com" class="social-icon email" aria-label="Email">
+                    <img src="{{ url_for('static', filename='images/gmail.jpg') }}" alt="Email">
+                </a>
+            </div>
+            <p class="copyright">© 2024 DYPCET. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    
+</body>
+
+</html>

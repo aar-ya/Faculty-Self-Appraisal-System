@@ -1,0 +1,466 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6fa;
+    color: #333;
+}
+
+ form {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Section Headers */
+h3 {
+    color: #004080;
+    margin-top: 20px;
+}
+
+/* Labels & Inputs */
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #004080;
+    outline: none;
+}
+
+/* File Input Text Display */
+p[id^="file-name-"] {
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+table th {
+    background-color: #e6f0ff;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+    background-color: #004080;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #0059b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Add New Button Styling */
+.add-new {
+    background-color: #00802b;
+}
+
+.add-new:hover {
+    background-color: #00b33c;
+}
+
+/* Save & Submit Buttons */
+#final-submit {
+    background-color: #cc0000;
+}
+
+#final-submit:hover {
+    background-color: #e60000;
+}
+
+/* Navigation Buttons */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.buttons button {
+    min-width: 120px;
+}
+
+/* Transitions between Sections */
+.form-section {
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+.form-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Responsive Improvements */
+@media screen and (max-width: 768px) {
+    form {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Limit input width inside tables */
+table input[type="number"],
+table input[type="text"],
+table select {
+    width: 80px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    font-size: 14px;
+} 
+
+/* Progress Bar Styles */
+.progress-bar-container {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
+    transition: transform 0.3s ease;
+  }
+
+/* Hide when scrolling down */
+.progress-bar-container.hide {
+    transform: translateY(-100%);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 10px;
+  }
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: #004080;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.error-message {
+    color: #cc0000;
+    background-color: #ffeeee;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-left: 4px solid #cc0000;
+}
+
+/* Invalid field styling */
+input:not(:focus):not(:placeholder-shown):invalid,
+select:not(:focus):invalid,
+textarea:not(:focus):not(:placeholder-shown):invalid {
+    border-color: #cc0000;
+    background-color: #ffeeee;
+}
+
+/* Add transition for smoother validation */
+input, select, textarea {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* File upload area styling */
+.file-upload-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.file-upload-area:hover {
+    border-color: #004080;
+    background-color: #f8faff;
+}
+
+/* Responsive table adjustments */
+@media screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .progress-bar-container {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+} 
+
+/* Only show red border AFTER user interaction */
+input:not(:focus):not(:placeholder-shown):invalid,
+select:not(:focus):invalid,
+textarea:not(:focus):not(:placeholder-shown):invalid {
+    border-color: #cc0000;
+}
+
+
+
+/* NEW CHANGES */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    animation: modalopen 0.3s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px)}
+    to {opacity: 1; transform: translateY(0)}
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal-btn.confirm {
+    background-color: #004080;
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background-color: #0059b3;
+}
+
+#modal-title {
+    color: #004080;
+    margin-top: 0;
+}
+
+#modal-message {
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+
+
+
+/* Review Page Styles */
+.review-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.review-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.review-section h2 {
+    color: #004080;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.review-item {
+    margin-bottom: 15px;
+}
+
+.review-item label {
+    font-weight: 600;
+    color: #555;
+}
+
+.review-item p {
+    margin: 5px 0 0 15px;
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px;
+    border-left: 3px solid #004080;
+}
+
+.review-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.review-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.review-btn i {
+    font-size: 16px;
+}
+
+.review-btn.confirm {
+    background-color: #28a745;
+    color: white;
+}
+
+.review-btn.confirm:hover {
+    background-color: #218838;
+}
+
+#edit-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+#edit-btn:hover {
+    background-color: #5a6268;
+}
+
+#download-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+#download-btn:hover {
+    background-color: #138496;
+}
+
+@media (max-width: 768px) {
+    .review-actions {
+        flex-direction: column;
+    }
+    
+    .review-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Add to attribute.css */
+.file-item {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 3px 8px;
+    background-color: #e6f0ff;
+    border-radius: 3px;
+    font-size: 0.9em;
+}

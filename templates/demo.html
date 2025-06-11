@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Self-Appraisal Form Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="back-arrow"><<</a>
+        <h1>Faculty Self-Appraisal Form Demo</h1>
+    </nav>
+
+    <!-- Main Content with Background Image -->
+    <section class="main-content">
+        <div class="form-container">
+            <form>
+                <h2>Faculty Personal Details</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="designation">Current Designation:</label>
+                <input type="text" id="designation" name="designation" required>
+
+                <label for="qualification">Highest Qualification:</label>
+                <input type="text" id="qualification" name="qualification" required>
+
+                <label for="year">Academic Year:</label>
+                <input type="text" id="year" name="year" required>
+
+                <h2>Self-Appraisal Parameters</h2>
+
+                <!-- Research Papers -->
+                <div class="parameter">
+                    <label for="research">No. of Research Papers:</label>
+                    <input type="number" id="research" name="research">
+                    <input type="file" id="researchAttachment">
+                    <button class="verify-btn">Verify on Google Scholar</button>
+                </div>
+
+                <!-- Seminars -->
+                <div class="parameter">
+                    <label for="seminars">No. of Seminars:</label>
+                    <input type="number" id="seminars" name="seminars">
+                    <input type="file" id="seminarsAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Lectures Conducted -->
+                <div class="parameter">
+                    <label for="lectures">No. of Lectures Conducted:</label>
+                    <input type="number" id="lectures" name="lectures">
+                    <!-- <input type="file" id="lecturesAttachment">
+                    <button class="verify-btn">Verify</button> -->
+                </div>
+
+                <!-- Student Feedback -->
+                <div class="parameter">
+                    <label for="feedback">Student Feedback:</label>
+                    <input type="number" id="feedback" name="feedback" max="5" step="0.1">
+                    <!-- <input type="file" id="feedbackAttachment">
+                    <button class="verify-btn">Verify</button> -->
+                </div>
+
+                <!-- Collaboration Activities -->
+                <div class="parameter">
+                    <label for="collaboration">Collaboration Activities:</label>
+                    <input type="number" id="collaboration" name="collaboration">
+                    <input type="file" id="collaborationAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Sponsored Projects -->
+                <div class="parameter">
+                    <label for="projects">Sponsored Projects:</label>
+                    <input type="number" id="projects" name="projects">
+                    <input type="file" id="projectsAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Student Mentoring -->
+                <div class="parameter">
+                    <label for="mentoring">Student Mentoring:</label>
+                    <input type="number" id="mentoring" name="mentoring">
+                    <input type="file" id="mentoringAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Awards -->
+                <div class="parameter">
+                    <label for="awards">Awards Won:</label>
+                    <input type="number" id="awards" name="awards">
+                    <input type="file" id="awardsAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Certifications -->
+                <div class="parameter">
+                    <label for="certifications">Certifications Done:</label>
+                    <input type="number" id="certifications" name="certifications">
+                    <input type="file" id="certificationsAttachment">
+                    <button class="verify-btn">Verify</button>
+                </div>
+
+                <!-- Predict and Suggestion Buttons Side by Side -->
+                <div class="button-group">
+                    <button class="predict-btn">Predict</button>
+                    <button class="suggestion-btn">Suggestions for Improvement</button>
+                </div>
+
+                <!-- Button for Email Prediction -->
+                <div class="email-prediction">
+                    <button class="email-btn">Get Prediction on Mail</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 DYPCET. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

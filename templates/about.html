@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Faculty Self-Appraisal System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="back-button">&lt;&lt;</a>
+        <h1>Faculty Self-Appraisal System</h1>
+    </div>
+    
+    <!-- Content Section -->
+    <div class="content-section">
+        <div class="section-title">What are challenges of Current Faculty Self-Appraisal System?</div>
+        <p class="description">
+            Faculty appraisal faces several challenges. Interpretive evaluation ensures fair assessments. Bias mitigation reduces unfair influences. Multidisciplinary difficulties arise from diverse fields. Time restrictions limit thorough evaluations. Multiple roles complicate balancing teaching, research, and administration. Data professional development improves data use. Integration of technology enhances the process. Autonomy vs accountability balances independence and responsibility.
+        </p>
+
+        <!-- Image Frame -->
+        <div class="hollow-shiny-frame">
+            <img src="{{ url_for('static', filename='images/Fa1.jpg') }}" alt="Challenges of Faculty Self-Appraisal" class="image-placeholder">
+        </div>
+
+        <div class="section-title">What is importance of Faculty Performance?</div>
+        <p class="description">
+            Faculty performance and appraisal systems are crucial. Digital platforms streamline processes. Personalized feedback enhances growth. Professional development is supported. Collaboration hubs foster teamwork. Data analytics provide insights. Open and direct communication ensures transparency.
+        </p>
+
+        <!-- Image Frame -->
+        <div class="hollow-shiny-frame">
+            <img src="{{ url_for('static', filename='images/Fa2.jpg') }}" alt="Importance of Faculty Performance" class="image-placeholder">
+        </div>
+
+        <div class="section-title">Benefits of Faculty Performance management</div>
+
+        <!-- Image Frame -->
+        <div class="hollow-shiny-frame">
+            <img src="{{ url_for('static', filename='images/Fa3.jpg') }}" alt="Benefits of Faculty Performance Management" class="image-placeholder">
+        </div>
+
+        <div class="solution-section">
+            <div class="solution-text">Here's the solution for the problem:</div>
+
+            <!-- Video Frame -->
+            <div class="hollow-shiny-frame">
+                <video controls class="video-placeholder">
+                    <source src="{{ url_for('static', filename='images/faculty.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 DYPCET. All rights reserved.
+    </div>
+</body>
+</html>

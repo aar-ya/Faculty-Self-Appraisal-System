@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_login.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>HOD Admin Login</h2>
+            <form id="loginForm" method="POST" action="/admin_login">
+                <div class="input-field">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <!-- <div class="input-field">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="super-admin">Super Admin</option>
+                        <option value="hod-admin">HOD Admin</option>
+                    </select>
+                </div> -->
+                <button type="submit" id="loginBtn">Login</button>
+                {% if error %}
+                    <div class="error">{{ error }}</div>
+                {% endif %}
+            </form>
+            
+        </div>
+    </div>
+    {% if success %}
+    <div id="toast" class="toast">{{ success }}</div>
+    <script>
+        window.onload = function () {
+            const toast = document.getElementById("toast");
+            if (toast) {
+                toast.classList.add("show");
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 3000);
+            }
+        };
+    </script>
+    {% endif %}
+</body>
+</html>

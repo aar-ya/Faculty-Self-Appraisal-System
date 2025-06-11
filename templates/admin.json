@@ -1,0 +1,10 @@
+{
+    "_id": {
+      "$oid": "6818ed024654b067aeb0d479"
+    },
+    "name": "aditya",
+    "emp_id": "123456",
+    "email": "adity@gmail.com",
+    "phone": "9876543201",
+    "password": "scrypt:32768:8:1$45DhRci0cZhapVxN$49819023e19b13a2868cf2403021171a2de4aa64c5d063329eec2a0b680bf5d44983bf3c943c79ac327fabd023e0c30b19a53365c9c9bbd9007f992a82f8a3a1"
+  }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Faculty Self-Appraisal System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+        <h1>Contact Us</h1>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>Have questions about our Faculty Self-Appraisal System? We're here to help!</p>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p><a href="mailto:envisagers1613@gmail.com">envisagers1613@gmail.com</a></p>
+                    <p class="response-time">Typically responds within 24 hours</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Support</h3>
+                    <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                    <p class="hours">Mon-Fri, 9am-5pm IST</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>College Address</h3>
+                    <p>DY Patil College of Engineering & Technology</p>
+                    <p>Kolhapur, Maharashtra 416006</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
+            <form action="/submit_contact" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+            <div class="faq-item">
+                <button class="faq-question">How do I reset my password? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>You can reset your password by clicking on the "Forgot Password" link on the login page. A password reset link will be sent to your registered email address.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">Where can I find my submitted appraisal forms? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>All submitted forms are available in the "My Submissions" section of your faculty dashboard. You can view, download, or print them at any time.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">Who should I contact for technical issues? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>For technical support, please email our IT team at <a href="mailto:techsupport@facultyappraisal.com">techsupport@facultyappraisal.com</a> or call our support line during business hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2024 DYPCET. All rights reserved.</p>
+    </div>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                question.classList.toggle('active');
+                
+                // Toggle icon between chevron-down and chevron-up
+                if (icon.classList.contains('fa-chevron-down')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(to right, #e6f0ff, #f2f7ff);
+    }
+
+    body {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(145deg, #dceeff, #ffffff);
+      border-right: 2px solid #b3d9ff;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .sidebar .admin-info {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .admin-info img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #0077cc;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .sidebar .admin-info input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      display: inline-block;
+      background-color: #0077cc;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .sidebar .admin-info h3 {
+      font-size: 18px;
+      color: #0077cc;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .sidebar nav ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar nav ul li button {
+      width: 100%;
+      background: #ffffff;
+      color: #000000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar nav ul li button:hover {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .main {
+      margin-left: 270px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 40px;
+      position: relative;
+    }
+
+    .main h1 {
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 119, 204, 0.2);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #0077cc;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="admin-info">
+      <img id="adminImage" src="default-avatar.png" alt="Admin Picture" />
+      <label for="uploadPic" class="upload-label">Change Picture</label>
+      <input type="file" id="uploadPic" accept="image/*">
+      <h3>Welcome, Admin</h3>
+    </div>
+    <nav>
+      <ul>
+        <li><button onclick="navigate('faculty')">Faculty Details</button></li>
+        <li><button onclick="navigate('settings')">Settings</button></li>
+        <li><button onclick="logout()">Logout</button></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="logoutToast" class="toast">✅ You have been logged out!</div>
+  <div class="main">
+    <h1>Welcome to Admin Dashboard</h1>
+    <div class="cards-container">
+      <div class="card">
+        <h3>Total Faculty</h3>
+        <p>128 Faculty Members</p>
+      </div>
+      <div class="card">
+        <h3>Pending Appraisals</h3>
+        <p>32 SAR Forms Pending</p>
+      </div>
+      <div class="card">
+        <h3>Departments</h3>
+        <p>10 Active Departments</p>
+      </div>
+    </div>
+    <div class="footer">
+      &copy; 2025 College Self Appraisal System. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    function navigate(page) {
+      alert("Redirecting to " + page + " (To be implemented)");
+    }
+
+    function logout() {
+      fetch('/admin_logout')
+        .then(response => {
+          if (response.redirected) {
+            const toast = document.getElementById('logoutToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+              toast.classList.remove('show');
+              window.location.href = response.url;
+            }, 2000);
+          }
+        });
+    }
+
+    document.getElementById('uploadPic').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('adminImage').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
